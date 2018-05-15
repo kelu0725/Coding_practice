@@ -1,0 +1,53 @@
+/**
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+Given nums = [2, 7, 11, 15], target = 9,
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+**/
+/**
+     Use a hashmap to record each number and its index
+     For each element, search if its offset is in the map, if exists, return result; 
+     otherwise update the map and continue searching
+     Time complexity: n (search and update map)
+     Space usage: n
+**/
+    
+
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+    if(nums==null || nums.length==0){
+        return null;
+    }
+    int []res = new int[2];
+    HashMap<Integer,Integer> map = new HashMap();   
+    for(int i =0; i< nums.length;i++){
+        if(map.containsKey(target-nums[i])){
+            res[0]=map.get(target-nums[i]);
+            res[1]=i;
+        }else
+        map.put(nums[i],i);
+    }
+    return res;
+    }
+}
+
+
+/**
+thoughs:
+1. Bruteforce: writing 2 loops and time complexity is O(N^2)
+2. Mistake: search and update instead of update and search
+3. If the array is sorted:
+   - binary search. O(N*logN)
+    for(i in nums){
+        search for (target-nums[i])
+        l=0;
+        h=nums.length-1;
+        m = (l+h)/2+l
+        compare target with m
+        }
+   - 2 pointers. O(N)
+      if(nums[h]+nums[l]>target) get rid of nums[h]
+      if(nums[h]+nums[l]<target) get rid of nums[l]
+    
