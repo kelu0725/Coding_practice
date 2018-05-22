@@ -1,0 +1,51 @@
+Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal's triangle.
+Note that the row index starts from 0.
+Example:
+Input: 3
+Output: [1,3,3,1]
+Follow up:
+Could you optimize your algorithm to use only O(k) extra space?
+
+//version1:
+space: all elements before k+k
+time: n
+//
+/**Array Manipulation
+1. print string: Arrays.toString(array)
+2. copy array:
+    - System.arraycopy(scrArray, srcPos, des, desPos, length); initialize an array before
+    - Arrays.copyOf(srcArray, size+1)
+3. Arrays.asList(array), with int[] array, wrong type
+Arrays.asList is expecting a variable number of Object. int is not an Object, so if changing the type to Integer, works.
+**/
+/**
+Breakpoint: find the index of kth row: k(k+1)/2 (i just tried the number..)
+**/
+
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> list = new ArrayList();
+        int k = rowIndex;
+        int size = k*(k+1)/2+k+1;
+        int[] array= new int [size];
+        for(int n = 0; n<= k; n++){
+            System.out.println(Arrays.toString(array));
+            int start = n*(n+1)/2;
+            int end =start+n;
+           array[start]=1;
+           array[end]=1;
+            int index = start+1;
+            while(index<end){
+                if(index-n-1>=0) array[index]=array[index-n-1]+array[index-n];
+                index++;
+            }
+        }  
+
+    int[] res = new int[k+1];
+    System.arraycopy(array,k*(k+1)/2, res, 0, k+1);
+    for(int i : res){
+        list.add(i);
+    }
+        return list;
+    }
+}
