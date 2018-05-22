@@ -1,0 +1,80 @@
+Count the number of prime numbers less than a non-negative number, n.
+Example:
+Input: 10
+Output: 4
+Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
+
+//version1: 
+class Solution {  
+    public int countPrimes(int n) {
+        if(n==0) return 0;
+        if(n==1) return 0; 
+        if(n==2) return 0;
+        int count = 0;
+        for(int i =2; i< n; i++){
+            if(isPrime(i)) count++;
+           }
+        return count;
+        }
+    /**
+    The reason that we only check i*i, check it is divisable only up to square root of n:
+    if n is not prime, n = a*b, a or b must less than square root of n, and it is enough to tell if it is prime or not.    
+    **/
+    private boolean isPrime(int n){
+        if(n==2||n==3) return true;
+         if(n%2==0) return false;
+        for(int i =3; i*i<=n; i=i+2){ //n is odd number   
+             if(n%i==0) return false;
+        }
+    return true;
+    }
+}
+
+//version2: n*logn
+class Solution {  
+    public int countPrimes(int n) {
+        if(n==0) return 0;
+        if(n==1) return 0; 
+        if(n==2) return 0;
+        int count = 0;
+        for(int i =2; i< n; i++){
+            if(isPrime(i)) count++;
+           }
+        return count;
+        }
+    /**
+    The reason that we only check i*i, check it is divisable only up to square root of n:
+    if n is not prime, n = a*b, a or b must less than square root of n, and it is enough to tell if it is prime or not.    
+    **/
+    //squre of N
+    private boolean isPrime(int n){
+        if(n==2||n==3) return true;
+         if(n%2==0) return false;
+        for(int i =3; i*i<=n; i=i+2){ //n is odd number   
+             if(n%i==0) return false;
+        }
+    return true;
+    }
+}
+
+
+//version2: use a notPrime array to store if a number is prime, everytime it is false, count++
+
+public class Solution {
+    public int countPrimes(int n) {
+        boolean[] notPrime = new boolean[n];
+        int count = 0;
+        //try when i =2, 3, 4, 5, 6...
+        for(int i = 2; i<n; i++){
+            if(notPrime[i]==false){
+                count++;
+            }
+            for(int j = 2; j*i<n; j++){
+                notPrime[j*i]= true;
+            }
+        }
+        return count;
+    }
+}
+
+
