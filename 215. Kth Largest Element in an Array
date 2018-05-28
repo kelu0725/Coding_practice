@@ -1,0 +1,87 @@
+
+Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+
+Example 1:
+
+Input: [3,2,1,5,6,4] and k = 2
+Output: 5
+Example 2:
+
+Input: [3,2,3,1,2,4,5,5,6] and k = 4
+Output: 4
+
+/**
+This question is used to practice sort algorithms:
+O(n^2):
+1. Insertion Sort
+2. Selection Sort
+3. Shell Sort
+4. Bubble Sort
+O(nlogn):
+5. Merge Sort
+6. Quick Sort
+7. Heap Sort
+**/
+/**
+note: assertion statement: throw exception if the condition is not true
+**/
+/** version1:
+intuitive: use java lib
+
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        Arrays.sort(nums);
+       // int res = 0;
+       // for(int i = nums.length-1, j=0; j<k && i>=0; i--,j++){
+           // res = nums[i];
+       // }
+        //return res;
+        return nums[nums.length-k];
+    }
+
+ 
+/**Selection sort: O(n*n). 
+Compare n times, if smaller than current one, swap.
+**/
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        int n = nums.length;
+        for(int i = 0; i<n; i++){
+            int max = i;
+            for(int j = i+1; j<n; j++){
+                if(nums[j]>nums[max]){
+                    swap(nums, j, max);
+                    //System.out.println(Arrays.toString(nums));
+                }
+            }
+        }
+        return nums[k-1];
+    }
+    private void swap(int[] nums, int j, int min){
+        int tmp = nums[j];
+        nums[j]=nums[min];
+        nums[min]=tmp;
+    }
+}
+
+/** Insertion sort: o(n*n). n compares, swap is less
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        int n = nums.length;
+        for(int i = 0; i<n; i++){ // i serves as pointer, not to swap
+            for(int j=i; j>0; j--){
+                if(nums[j]>nums[j-1]){ //compare (i-1) times
+                    swap(nums,j-1,j);
+                }   
+            }
+        }
+        return nums[k-1];
+    }
+    private void swap(int[] nums, int j, int min){
+        int tmp = nums[j];
+        nums[j]=nums[min];
+        nums[min]=tmp;
+    }
+}
+
+
