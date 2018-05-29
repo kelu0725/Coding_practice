@@ -47,5 +47,5 @@ thoughs:
    - 2 pointers. O(N)
       if(nums[h]+nums[l]>target) get rid of nums[h]
       if(nums[h]+nums[l]<target) get rid of nums[l]
-SO, don't use binary search here....
+SO, don't use binary search here
  
