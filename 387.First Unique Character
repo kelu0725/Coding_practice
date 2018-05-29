@@ -16,8 +16,7 @@ class Solution {
                 if(dupSet.contains(s.charAt(i))) continue;
                 else map.put(s.charAt(i),i);
         }
-    }
-        
+    }   
       if(map.size()==0) return -1;
       int min = Integer.MAX_VALUE;
       for(Character c : map.keySet()){
