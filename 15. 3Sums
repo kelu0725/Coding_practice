@@ -20,8 +20,6 @@ To be explored: hashmap(n^2)
 
 **/
 
-
-
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList();
         if(nums==null||nums.length==0){
@@ -63,8 +61,5 @@ To be explored: hashmap(n^2)
         return res;
 }
 }
-
-
-
 
 
