@@ -8,7 +8,6 @@ Output: true
 Follow up:
 Could you do it in O(n) time and O(1) space?
 
-
 //time: O(n+n+n)=O(n)
 /**
  * Definition for singly-linked list.
