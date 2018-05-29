@@ -1,0 +1,46 @@
+Use O(N*logN) sorting 
+
+1. mergesort
+Implementation tip: 
+  -Parameter to pass: original array, result array, index
+  -First divide, then conquer
+  -Pass the new array to num, as original array
+  
+private void sort(int [] nums){
+  if(nums.length==1) return;
+  int [] res = new int[nums.length];
+  sort(nums,res,0, nums.length-1);
+  
+}
+private void sort(int[] nums, int[] res, int start, int end){
+       if(start>=end) return;
+        //divide
+       int mid = start+(end-start)/2;
+       sort(nums, res, start, mid);
+       sort(nums,res, mid+1, end);
+       //merge
+       int index = start;
+       int leftstart = start;
+       int rightstart = mid+1;
+       while(leftstart<=mid && rightstart<=end){
+          if(nums[leftstart]>nums[rightstart]){
+               res[index++]=nums[leftstart];
+               leftstart++;
+           }else{
+               res[index++]=nums[rightstart];
+               rightstart++;
+           }
+       }
+      while(leftstart<=mid){
+          res[index++]=nums[leftstart++];
+      }
+      while(rightstart<=end){
+          res[index++]=nums[rightstart++];
+      }
+        for (int i = start; i <= end; i++) {
+            nums[i] = res[i];
+        }
+    }
+    
+ 2. quicksort
+ 
