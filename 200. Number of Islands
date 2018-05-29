@@ -120,7 +120,6 @@ class Solution {
     2. initially count=number of '1', connect if adjacent, count--
     **/
 
-
 class Solution {
    
    private class UnionFind { 
