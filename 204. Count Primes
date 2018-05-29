@@ -57,7 +57,6 @@ class Solution {
     }
 }
 
-
 //version2: use a notPrime array to store if a number is prime, everytime it is false, count++
 
 public class Solution {
