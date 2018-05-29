@@ -12,7 +12,6 @@ Input: [2,2,1,1,1,2,2]
 Output: 2
 
 
-
 /**version1: hashmap. O(n) and O(n)
 class Solution {
     public int majorityElement(int[] nums) {
