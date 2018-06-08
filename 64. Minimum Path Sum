@@ -1,0 +1,28 @@
+class Solution {
+    public int minPathSum(int[][] grid) {
+        //the point can move from top or from left, so for grid[n-1][m-1],the minimum is determined by the minimum before it.
+        // top-down and bottom-up are very similar, use bottom-up this time
+        int n = grid.length;
+        int m = grid[0].length;
+        int[][] dp = new int[n][m];
+        dp[n-1][m-1]=grid[n-1][m-1];
+        //initialize the right-most column
+        for(int i = n-2; i>=0; i--){
+            dp[i][m-1]=grid[i][m-1]+dp[i+1][m-1];
+     //    System.out.println("dp["+i+"]["+(m-1)+"]="+ dp[i][m-1]);
+        }
+        // initialize the bottom row
+        for(int j = m-2; j>=0; j--){
+            dp[n-1][j]=grid[n-1][j]+dp[n-1][j+1];
+     //     System.out.println("dp["+(n-1)+"]["+j+"]="+ dp[n-1][j]);
+        }
+        
+        for(int i = n-2; i>=0; i--){
+            for(int j = m-2; j>=0; j--){
+                dp[i][j]=Math.min(dp[i+1][j],dp[i][j+1])+grid[i][j];
+    //             System.out.println("i="+i+",j="+j+",dp["+i+"]["+j+"]="+dp[i][j]);
+            }
+        }
+        return dp[0][0];
+    }
+}
