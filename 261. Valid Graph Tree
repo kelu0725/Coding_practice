@@ -1,0 +1,68 @@
+
+ //two conditions: 1. all node are connected, from one node you can get all the other node; 
+        //                2. no loop, which means number of edge == n-1, if more, there's loop; 
+        // edge=n-1 is not enough to check if all nodes are connected
+
+
+class Solution {
+    public boolean validTree(int n, int[][] edges) {
+       
+        if(edges == null || edges.length!=n-1) return false;
+        Map<Integer, ArrayList<Integer>> map = new HashMap();
+        initializeGraph(map, n, edges);
+        Queue<Integer> q = new LinkedList();
+        Set<Integer> set = new HashSet();
+        q.offer(0);
+        set.add(0);
+        while(!q.isEmpty()){
+            Integer front = q.poll();
+       //     if(set.size()>n) return false;
+            ArrayList<Integer> neighbor = map.get(front);
+        //    if(neighbor.size()==0) return false;
+            for(Integer i: neighbor){
+                if(!set.contains(i)){
+                    q.offer(i);
+                    set.add(i);
+                }
+            }
+        }
+        return set.size()==n;  
+    }
+    private void initializeGraph(Map<Integer, ArrayList<Integer>> map, int n, int[][] edge){
+        for(int i = 0; i<n; i++){
+            map.put(i, new ArrayList<Integer> ());
+        }
+        for(int i = 0 ; i<edge.length; i++){
+            map.get(edge[i][0]).add(new Integer(edge[i][1]));
+            map.get(edge[i][1]).add(new Integer(edge[i][0])); 
+        }   
+    }
+   
+}
+
+
+ //union-find solution: 
+        //initially, every node is -1, suggesting its parents is itself, once two nodes get connected, 
+        //they have the same parent.
+        // if the latest node have same parents with previous one, it suggests they are connected.
+        // 0,1,2#2,3
+        
+class Solution {
+    public boolean validTree(int n, int[][] edges) {
+      
+        int[] nums= new int[n];
+        Arrays.fill(nums, -1);
+        for(int i=0; i<edges.length; i++){
+            int x = find(nums,edges[i][0]); //x is edge[i][0]'s parent
+            int y = find(nums,edges[i][1]);//y is edge[i][1]'s parent
+            if(x==y) return false;//if the parents are same, return false
+            nums[x]=y;//x's parent is assigned to y
+        }
+        return edges.length==n-1;
+    }
+    private int find(int[] nums, int i){
+        if(nums[i]==-1) return i;
+        return find(nums, nums[i]);
+    }
+   
+}
