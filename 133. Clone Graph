@@ -1,0 +1,113 @@
+Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
+
+
+OJ's undirected graph serialization:
+Nodes are labeled uniquely.
+
+We use # as a separator for each node, and , as a separator for node label and each neighbor of the node.
+As an example, consider the serialized graph {0,1,2#1,2#2,2}.
+
+The graph has a total of three nodes, and therefore contains three parts as separated by #.
+
+First node is labeled as 0. Connect node 0 to both nodes 1 and 2.
+Second node is labeled as 1. Connect node 1 to node 2.
+Third node is labeled as 2. Connect node 2 to node 2 (itself), thus forming a self-cycle.
+Visually, the graph looks like the following:
+
+       1
+      / \
+     /   \
+    0 --- 2
+         / \
+         \_/
+         
+         
+         
+/**
+ * Definition for undirected graph.
+ * class UndirectedGraphNode {
+ *     int label;
+ *     List<UndirectedGraphNode> neighbors;
+ *     UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
+ * };
+ */
+public class Solution {
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+
+        if(node == null) return null;
+        Map<UndirectedGraphNode,UndirectedGraphNode> mapping = new HashMap();
+        Queue<UndirectedGraphNode> queue= new LinkedList();
+        mapping.put(node, new UndirectedGraphNode(node.label));//copy first nodes
+        queue.offer(node);
+       
+        while(!queue.isEmpty()){
+            UndirectedGraphNode front = queue.poll();
+            UndirectedGraphNode newNode = mapping.get(front);
+            for(UndirectedGraphNode n: front.neighbors){
+                //the process: put the node into queue, copy the node to mapping, copy the edge to neighbors
+              if(mapping.get(n)==null) {
+                  queue.offer(n);
+                  mapping.put(n, new UndirectedGraphNode(n.label));
+                  newNode.neighbors.add(mapping.get(n)); 
+              }else 
+                  newNode.neighbors.add(mapping.get(n));
+           }
+        }
+        return mapping.get(node);
+            
+    }
+}
+
+
+
+
+The lecture from ninechapter
+/**
+ * Definition for undirected graph.
+ * class UndirectedGraphNode {
+ *     int label;
+ *     List<UndirectedGraphNode> neighbors;
+ *     UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
+ * };
+ */
+public class Solution {
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+       
+        if(node == null)  return null;
+       
+        List<UndirectedGraphNode> nodeList = getNodes(node);
+      
+        Map<UndirectedGraphNode,UndirectedGraphNode> mappingNodes = new HashMap();
+        for(UndirectedGraphNode n : nodeList){
+            mappingNodes.put(n, new UndirectedGraphNode(n.label));
+        }
+        
+        for(UndirectedGraphNode n : nodeList){
+            UndirectedGraphNode newNode = mappingNodes.get(n);
+            
+          for(UndirectedGraphNode neighbor : n.neighbors){
+             UndirectedGraphNode newNeighbor = mappingNodes.get(neighbor);
+              newNode.neighbors.add(newNeighbor);
+       }
+       
+        }
+         return mappingNodes.get(node);
+    
+    }
+        public List<UndirectedGraphNode> getNodes(UndirectedGraphNode node){
+          Queue<UndirectedGraphNode> queue= new LinkedList();//queue is used to track the node in the front and its neighbors
+          Set<UndirectedGraphNode> set = new HashSet();
+            queue.offer(node);
+            set.add(node);
+            while(!queue.isEmpty()){
+                UndirectedGraphNode n = queue.poll();
+                for(UndirectedGraphNode no: n.neighbors){
+                    if(!set.contains(no)){
+                        queue.offer(no);
+                        set.add(no);
+                    }
+                }
+            }
+            return new ArrayList<UndirectedGraphNode> (set); // how to convert set to arrayList; convert set
+        }
+    }
