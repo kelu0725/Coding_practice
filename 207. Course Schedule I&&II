@@ -1,0 +1,98 @@
+207. CourseScheduleI:
+There are a total of n courses you have to take, labeled from 0 to n-1.
+Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]
+
+Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses?
+
+Example 1:
+
+Input: 2, [[1,0]] 
+Output: true
+Explanation: There are a total of 2 courses to take. 
+             To take course 1 you should have finished course 0. So it is possible.
+Example 2:
+
+Input: 2, [[1,0],[0,1]]
+Output: false
+Explanation: There are a total of 2 courses to take. 
+             To take course 1 you should have finished course 0, and to take course 0 you should
+             also have finished course 1. So it is impossible.
+
+class Solution {
+    /*Key step: Keep track of indegree, put the node with 0 indegree into queue.
+    if there's a cycle, all indegree>0, while processed number < numCourses
+    ********************
+    * Key notes:The way to store adjacent list
+    1.Use map<Integer, ArrayList<integer>>
+    2. Use array of list: ArrayList[] list
+    ********************
+    * key error: When calculating indegree of one node, don't need to consider the pre-course indegree. 
+    If two nodes with different indegrees point to same node, bfs will search the node after searching all its previous nodes, 
+    so that all nodes are processed. Otherwise it is possible that some nodes are missing
+    ***********/
+    public boolean canFinish(int numCourses, int[][] prerequisites) {  
+        if(prerequisites==null) return true;
+        int[] indegree = new int[numCourses]; //store indegree
+        ArrayList<Integer>[] nextCourse = new ArrayList[numCourses]; //if not initialized, it's null
+        for(int i = 0; i<numCourses;i++){
+            nextCourse[i]=new ArrayList<Integer>();
+        }
+        for(int i = 0; i<prerequisites.length; i++){
+            indegree[prerequisites[i][0]]++;//don't need to add the pre-course indegree; if more than 1 node points to another node, that node get increment
+            nextCourse[prerequisites[i][1]].add(prerequisites[i][0]);
+        }
+        Queue<Integer> bfs = new LinkedList();
+        for(int i = 0; i<numCourses; i++){
+            if(indegree[i]==0) bfs.offer(i);
+        }
+        if(bfs.size()==0) return false;
+        int num = 0;
+        while(!bfs.isEmpty()){
+            Integer front = bfs.poll();
+            num++;
+            ArrayList<Integer> next = nextCourse[front];
+            for(int i = 0; i<next.size(); i++){
+                Integer x = next.get(i);
+                indegree[x]--;
+                if(indegree[x]==0) bfs.offer(x);
+            }        
+        }
+        return numCourses==num;
+        }
+    }
+Course Schedule II: return any of them
+/*Key error:
+  Same as above, don't need to consider each path.
+*/
+class Solution {
+    public int[] findOrder(int numCourses, int[][] prerequisites) {   
+        int[] indegree = new int[numCourses];
+        ArrayList<Integer>[] nextcourse = new ArrayList[numCourses];
+        int[] res = new int[numCourses];
+        for(int i = 0; i<numCourses; i++){
+            nextcourse[i]=new ArrayList<Integer>();
+        }
+        for(int i = 0; i<prerequisites.length;i++){
+            indegree[prerequisites[i][0]]++;
+            nextcourse[prerequisites[i][1]].add(prerequisites[i][0]);
+        }
+        Queue<Integer> bfs = new LinkedList();
+        for(int i = 0; i<numCourses; i++){
+            if(indegree[i]==0) bfs.offer(i);
+        }
+      
+        if(bfs.size()==0) return new int[0];
+        int num=0;
+        while(!bfs.isEmpty()){
+            Integer front = bfs.poll();
+            res[num++]=front;
+          
+            for(Integer i : nextcourse[front]){
+                indegree[i]--;
+                if(indegree[i]==0) bfs.offer(i);  
+            }
+        }
+        if(num==numCourses) return res;
+        else return new int[0];
+    }
+}
