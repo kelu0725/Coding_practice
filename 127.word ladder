@@ -1,0 +1,124 @@
+Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
+
+Only one letter can be changed at a time.
+Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
+Note:
+
+Return 0 if there is no such transformation sequence.
+All words have the same length.
+All words contain only lowercase alphabetic characters.
+You may assume no duplicates in the word list.
+You may assume beginWord and endWord are non-empty and are not the same.
+Example 1:
+
+Input:
+beginWord = "hit",
+endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
+
+Output: 5
+
+Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+return its length 5.
+Example 2:
+
+Input:
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log"]
+
+Output: 0
+
+Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+
+1. //Check: Count how many times the current word can change to a word in the list
+    //m (size of reached)(I think it is l*l in this solution) * n (size of wordDict) * l (length of words)
+2. //change the string character and check if it is in wordlist
+    //25 * n (size of wordDict) * l (length of words)
+    
+    
+1.class Solution {
+  
+      public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        			if(!wordList.contains(endWord)) return 0;
+		Queue<String> queue = new LinkedList<String>();
+		queue.add(beginWord);
+		int level = 0;
+		while(!queue.isEmpty()) {
+			level++;
+			int size = queue.size();
+			for(int i = 0; i < size; i++) {
+				String cur = queue.poll();
+				if(cur.equals(endWord)) return level;
+				for(Iterator<String> it =  wordList.iterator(); it.hasNext(); ) {
+					String str = it.next();
+					if(this.check(str, cur)) { 
+						it.remove();
+						queue.add(str);
+					}
+				}
+			}
+		}
+		return 0;
+    }
+   
+    public boolean check(String str1, String str2) {
+		char[] arr1 = str1.toCharArray();
+		char[] arr2 = str2.toCharArray();
+		int count = 0;
+		for(int i = 0; i < arr1.length; i++) {
+			if(arr1[i] != arr2[i]) count++;
+		}
+		return count == 1;
+	}
+}
+
+
+2. 
+class Solution {
+    /*Key error: must differentiate the level!
+    * Key error: misuse of string replace method, it replaces all old char
+    */
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        char[] alph = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        Set<String> wordlist = new HashSet();// use to store all words
+        for(String s : wordList){
+            wordlist.add(s);
+        }
+        Set<String> set = new HashSet();//use to store all words that's been transformed to
+        Queue<String> q = new LinkedList();
+        q.offer(beginWord);
+        set.add(beginWord);// use to store the word needed to check
+       
+        int len = 1;
+     while(!q.isEmpty()){
+         System.out.println("set="+set.toString());
+        len++;
+        int size = q.size();
+        for(int j=0; j<size; j++){
+            String word = q.poll();
+            for(int i = 0; i<word.length(); i++){
+                for(char c : alph){
+                    if(c==word.charAt(i)) continue;
+                    String tmp =replace(word,c,i);
+               //     System.out.println("i="+i+",c="+c+",tmp="+tmp);
+                    if(!wordlist.contains(tmp)) continue;
+                    else if(endWord.equals(tmp)){
+                        return len;
+                    }else if(!set.contains(tmp)) {
+                        q.offer(tmp);
+                        set.add(tmp);
+                    }
+                }
+            }
+        }
+     }
+        return 0;
+        
+    }
+    private String replace(String word, char c, int i){
+        char[] array = word.toCharArray();
+        array[i]=c;
+        return String.valueOf(array);
+    }
+}
