@@ -1,28 +1,39 @@
-insertion position, first position, last position, first bad version, peak element
-search 2D array I+II
-minimum in rotated arrayI+II, search in rotated sorted array I+II
-debug昨天的题：merge intervals, insertion sort list
-注意的点：
+
+Find positions: insertion position, first position, last position, first bad version
+Reduce Search Steps: search 2D array I+II, peak element
+Rotated arrays:minimum in rotated arrayI+II, search in rotated sorted array I+II
+
+Debug昨天的遗留问题：merge intervals, insertion sort list 
+补充前天的遗留sorting: insertion sort
+
+
+二分法笔记：
 1. while(start+1<end)
 - For every loop, start=m or end=m;不需要考虑m+1或者m-1.
 - 不必考虑越界
 - 退出循环：start在end前一位 or 满足循环内条件
   跳出循环后：看start、end和target之间的关系.
-
 2. 循环内：是否需要单独考虑==target，start与end怎么变化
 e.g.
 2.1 若找first position,end指针变化；若找last position,start指针变化。
 2.2 Rotated Array有duplicate number：
   - search target: start++.{1，5，1，1，1} 找5
   - find minimum: end--.{1，5，5，5}找Minimum
-
 3. peak element和search 2d arrayII：找到单调递增，单调递减的节点。看到一个帖子说二分法的本质是减少搜索次数，深以为然。
-
-4. Rotated array的性质：rotated点的左边的每一个elements都比右边每一个elements大
+4. Rotated array的性质：rotated点的左边的每一个elements都比右边每一个elements大，根据这个性质判断sorted half
   
 遗留问题：
-1. 实现hashmap,set数据结构
+1. 实现数据结构：hashmap,set,priorityqueue
 2. median of two sorted array
-3. mergesort
+3. Sorting
+薄弱：
+1. trie
+2. sampling
+3. binary index tree
+4. bit manipulation
+5. greedy
+6. backtracing
+7. DP
+8. math
 
-计划修改。今天起就按照topic刷题，遇见盲区再补知识点，尽量总结。
+计划修改。今天起就按照topic刷题，遇见盲区再补知识点。
