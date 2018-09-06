@@ -1,7 +1,7 @@
 insertion position, first position, last position, first bad version, peak element
 search 2D array I+II
 minimum in rotated arrayI+II, search in rotated sorted array I+II
-
+debug昨天的题：merge intervals, insertion sort list
 注意的点：
 1. while(start+1<end)
 - For every loop, start=m or end=m;不需要考虑m+1或者m-1.
@@ -16,8 +16,11 @@ e.g.
   - search target: start++.{1，5，1，1，1} 找5
   - find minimum: end--.{1，5，5，5}找Minimum
 
-3. peak element和search 2d arrayII：找到单调递增，单调递减的节点
+3. peak element和search 2d arrayII：找到单调递增，单调递减的节点。看到一个帖子说二分法的本质是减少搜索次数，深以为然。
 
 4. Rotated array的性质：rotated点的左边的每一个elements都比右边每一个elements大
   
-
+遗留问题：
+1. 实现hashmap,set数据结构
+2. median of two sorted array
+3. mergesort
