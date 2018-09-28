@@ -1,0 +1,21 @@
+lc 225
+简单题，能够想到不够优化的做法。优化后，操作更为简洁。
+拓展：
+Queue用Linkedlist实现：
+
+1. Principle of reusable object-oriented design.
+https://www.artima.com/lejava/articles/designprinciples.html
+Program to an interface, not an implementation.
+Decoupled from implementation.That means the implementation can vary, and that's a healthy dependency relationship.
+So this approach gives you flexibility, but it also separates the really valuable part, the design, 
+from the implementation, which allows clients to be decoupled from the implementation. 
+
+2. Java Collection
+Set ->EnumSet 
+    ->SortedSet -> TreeSet
+    ->HashSet -> LinkedHashSet
+List -> ArrayList
+     -> LinkedList
+     -> Vector -> Stack
+Queue -> Dequeue -> LinkedList
+      -> PriorityQueue
