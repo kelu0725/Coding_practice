@@ -27,5 +27,10 @@ lc 281 Iterator
 想到不够优化，follow up当k个List时，一个一个存入List会占用空间过大。
 优化做法：用iterator. 
 Notes:
-1. Why iterator is faster?
+1. Why iterator is faster? ??????????/Source Code for Iterator?????
+for linkedlist, it is faster; for arraylist, not faster?
 
+2. remove vs poll in Queue
+The remove and poll methods differ in their behavior only when the queue is empty. Under these circumstances, 
+remove throws NoSuchElementException , while poll returns null . 
+The element and peek methods return, but do not remove, the head of the queue.
