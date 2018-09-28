@@ -1,9 +1,9 @@
-lc 225
+lc 225 Stack/Queue
 简单题，能够想到不够优化的做法。优化后，操作更为简洁。
-拓展：
-Queue用Linkedlist实现：
-
-1. Principle of reusable object-oriented design.
+Notes:
+1. Queue用Linkedlist实现：
+Reasons:
+Principle of reusable object-oriented design.
 https://www.artima.com/lejava/articles/designprinciples.html
 Program to an interface, not an implementation.
 Decoupled from implementation.That means the implementation can vary, and that's a healthy dependency relationship.
@@ -19,3 +19,13 @@ List -> ArrayList
      -> Vector -> Stack
 Queue -> Dequeue -> LinkedList
       -> PriorityQueue
+      
+3. Design: declare class and initialize it in the constructor. 
+An object is created in the heap after we call constructor. Don't initialize in the field.
+
+lc 281 Iterator
+想到不够优化，follow up当k个List时，一个一个存入List会占用空间过大。
+优化做法：用iterator. 
+Notes:
+1. Why iterator is faster?
+
