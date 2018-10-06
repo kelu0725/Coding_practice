@@ -1,0 +1,46 @@
+1.Representation
+1.1 list of edges
+
+1.2 adjacency list
+- pro:
+- cons:
+
+In practice, more SPARSE graph, huge number of vertice, low average vertex degree
+
+1.3 adjacency matrix:[i][j]=1 or 0
+- Pro: remove and check edges takes O(1)
+- con: 
+
+COMPARISON:
+Representtation:list of edges; adjacency list; adjacency matrix
+space:                   E;2E+V;(每个点一个list，每个邻居代表有边); V^2
+remove/add edges:        1; degree(V) (V有几度就找几次点，增加邻居）; 1(直接改坐标)
+remove/add vertex:       degree(v)(V有几度就增加几个edge);degree(V)(有几度就找几个点增加邻居); V^2 remove/V add;  
+edge between v and w: E: E;degree(V);1
+iterate over vertice adjacent to v: E
+
+
+
+2. application
+social network, city-road, precedence
+
+3. Problems
+Path: Is there a path between s and t?
+shortest path: shortest path between s and t?
+
+Cycle: is there a cycle in the graph?
+Euler Tour: a cycle that uses each path once?
+Hamilton Tour: a  cycle that uses each vertice once?
+
+connectivity: is there a way to connect all the vertice?
+MST:what is the best way to connect all of the vertice -- minimum spanning tree
+biconnectivity: is there a vertice whose removal disconnects a graph?
+
+Planarity: draw a graph without edge crossing
+graph ismorphism: do two adjacency list represents the same graph?
+
+
+4. basic operation
+- compute degree
+- average degree : twice the edges divided by vertices
+
