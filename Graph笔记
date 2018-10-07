@@ -44,3 +44,11 @@ graph ismorphism: do two adjacency list represents the same graph?
 - compute degree
 - average degree : twice the edges divided by vertices
 
+5. Problems
+- DFS to traverse and find connected components
+- 1. is a graph bipartite? Simple DFS based
+- 2.Find a cycle? DFS based.
+- 3.Is therea a cycle that uses every edges once? - Euler proved it: connected, and all the vertices have even degree
+- 4. find a cycle that uses every vertex once? NP problem, nobody knows a sufficient solutions with large graph
+- 5. two identical graphs or not, except for vertex name?- nobody knows
+
