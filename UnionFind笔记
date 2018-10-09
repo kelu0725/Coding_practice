@@ -23,3 +23,6 @@ find parent: find root from current node
     
  
 5. 问题
+- 两点是否联通：find root; percolation判断top row和Bottom row是否联通，可以用两个virtual node 代表top/bottom
+- 联通的数量：若整个图都是valid的，初始化count=n,每次Union都decrement by 1; 
+           若整个图有不valid的，初始化count=0,每次+1,若与邻接点可以union，decrement by 1
