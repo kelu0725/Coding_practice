@@ -1,0 +1,25 @@
+find parent: find root from current node
+1. quick find:
+    union: O(N), int pid=root[p], in qid=root[q], change all the entries whose parent is p's parent to q's par
+    find:O(1)
+    非常平坦的tree,hight is 2
+2. quick union:
+    union: O(N) find root first, so time cost is depth of the node, 
+    root[p]=root[q],
+    find: O(N) depth of the node
+3. weightedunionfind
+    add an array sz[n] to keep track of tree size, link the smaller tree to the larger tree. 
+    union: O(lg(max(depth(p),depth(q))))--> cost of find root (是以2为底的对数)
+    
+    Proposition. Depth of any node x is at most lg N.
+    Pf. When does depth of x increase?
+    Increases by 1 when tree T1(small one) containing x is merged into another tree T2(large one).
+  ・The size of the tree containing x at least doubles since | T2 | ≥ | T1 |. 
+  ・Size of tree containing x can double at most lg N times. Why?
+    
+    
+4. path compression
+  two ways: (1) two-pass ;(2)simpler one-pass, int the find root method: point every node's parents to it's grand parents
+    
+ 
+5. 问题
