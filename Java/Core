@@ -4,20 +4,24 @@ JDK is the development kit that are used for developers, JDK includes JRE
 JRE contains library, JVM implementation
 
 2. Jar vs War
-Jar is java achive, it is a complete java application
-War is webapplication achive, 
+Jar is java achive, it contains all related files including java class, libraries and properties
+War is web application achive, it can be deployed on any servlet container. 
+The main difference is that war file follows certain structure that includes a WEB-INF
 
 3. Interface vs Abstract
-Interface: a contract between clients and server, it has un implemented method that 
-requires implementation whenever it is required.
-Abstract class: in abstract class, abstract method and concrete. There are some subclasses that have same behaviors, 
-we don't have to write the same method over again. 
+Interface: a contract between clients and server, all variables are public.It doesnt have data field.
+and the methods are abstract that requires implementation by whatever classes that implements this interfaces;
+A class can implements multiple interfaces.
+Abstract class:  An abstract can have abstract method and concrete. variables can have different accesiablity.
+There are some subclasses that have same behaviors, we don't have to write the same method over again. 
+A class can only extends on abstract class.
 
 4. serialization
-to transfer objects from one machine to another machine. 
+it is used to transfer objects from one machine to another machine. 
+
 
 5. transient vs static
-That variable cannot be serialized
+Transient in java means it is not a persistent state of an object, and this variable cannot be serialized
 
 6. checked exception/ unchecked exception
 checked exception is compiled
@@ -30,14 +34,14 @@ all runtime exception is classified as unchecked exception
 9. synchronized()
 enable the lock explicitly, to work in multi-threading
 
-10. Thread class interface implementing runnable interface, run()
+10. How to create threads in java?
+Thread class interface implementing runnable interface, run()
 which one is better to use?
 
 11. autoboxing
 use wrapper class, to primitive, autoboxing 
 
 12. singleton design pattern, MVC controller
-
 
 
 13. SOAP vs RESTFUL
@@ -68,25 +72,30 @@ application context
 XML being 
 
 22. BeanFactory vs Application Context
-annotation, 
 
+23. main interface
+load
 
+24.
+Swing
 
-It can be packed into Jar file and run on any platform with JVM.
-OOPS concepts and collections concepts. Spark, Scala, singleton concepts. 
-dependency injection, MVC architechture and .net mvc Architecture, java springs .
-difference between abstract class and inheritance, how to create threads in java, 
-difference between checked and unchecked exceptions, what is throws keyword, 
-how to handle exceptions, what is finalize method, what is a driver in jdbc,
-list the differences between the types of drivers in jdbc, 
-define MVC architecture, define dependancy injection
-,multithreading,abstraction,synchronization.
+25.Serialisation
 
+26.Networking: sockets
 
+27. OOP concetps
 
-difference between abstract class and inheritance, 
-how to create threads in java, difference between checked and unchecked exceptions,
-what is throws keyword, how to handle exceptions, what is finalize method,
-what is a driver in jdbc, 
-list the differences between the types of drivers in jdbc, 
-define MVC architecture, define dependancy injection  
+28. Collections
+
+29. what is driver in jdbc
+
+30. difference between types of drivers in jdbc
+
+31. SQL normalization
+
+32.hashmap,treemap,linkedhashmap
+HashMap offers O(1) lookup and insertion. It is implemented by an array of linked lists.
+TreeMap offers O(log N) lookup and insertion. Keys are ordered. It is implemented by a Red-Black Tree.
+LinkedHashMap offers O(1) lookup and insertion. Keys are ordered by their insertion order. 
+It is implemented by doubly-linked buckets.
+
