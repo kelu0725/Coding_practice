@@ -1,0 +1,92 @@
+
+1. JDK vs JRE
+JDK is the development kit that are used for developers, JDK includes JRE
+JRE contains library, JVM implementation
+
+2. Jar vs War
+Jar is java achive, it is a complete java application
+War is webapplication achive, 
+
+3. Interface vs Abstract
+Interface: a contract between clients and server, it has un implemented method that 
+requires implementation whenever it is required.
+Abstract class: in abstract class, abstract method and concrete. There are some subclasses that have same behaviors, 
+we don't have to write the same method over again. 
+
+4. serialization
+to transfer objects from one machine to another machine. 
+
+5. transient vs static
+That variable cannot be serialized
+
+6. checked exception/ unchecked exception
+checked exception is compiled
+all runtime exception is classified as unchecked exception
+
+7. why we use exception
+
+8. finally, final, finalized()
+
+9. synchronized()
+enable the lock explicitly, to work in multi-threading
+
+10. Thread class interface implementing runnable interface, run()
+which one is better to use?
+
+11. autoboxing
+use wrapper class, to primitive, autoboxing 
+
+12. singleton design pattern, MVC controller
+
+
+
+13. SOAP vs RESTFUL
+Restful: http only; html, json; lightweight; test using simple url
+SOAP
+
+14. hibernate
+servlet
+
+15. servlet context object
+web container object
+data to shared on all objects
+
+16. servlet config object
+
+17. jsp
+
+18. spring
+
+19. spring modules, data acess, AOP, JSP
+
+20. inject dependency
+configure the bean, 
+auto wiring process, by type, by name
+
+21. main interface
+application context
+XML being 
+
+22. BeanFactory vs Application Context
+annotation, 
+
+
+
+It can be packed into Jar file and run on any platform with JVM.
+OOPS concepts and collections concepts. Spark, Scala, singleton concepts. 
+dependency injection, MVC architechture and .net mvc Architecture, java springs .
+difference between abstract class and inheritance, how to create threads in java, 
+difference between checked and unchecked exceptions, what is throws keyword, 
+how to handle exceptions, what is finalize method, what is a driver in jdbc,
+list the differences between the types of drivers in jdbc, 
+define MVC architecture, define dependancy injection
+,multithreading,abstraction,synchronization.
+
+
+
+difference between abstract class and inheritance, 
+how to create threads in java, difference between checked and unchecked exceptions,
+what is throws keyword, how to handle exceptions, what is finalize method,
+what is a driver in jdbc, 
+list the differences between the types of drivers in jdbc, 
+define MVC architecture, define dependancy injection  
