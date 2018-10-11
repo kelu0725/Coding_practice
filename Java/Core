@@ -34,7 +34,7 @@ all runtime exception is classified as unchecked exception
 
 
 8. finally, final, finalized()
-how to create an immutable class
+how to create an immutable class: final class, cannot modify the data by subclass.
 
 
 9. synchronized()
@@ -78,6 +78,7 @@ auto wiring process, by type, by name
 application context
 XML being 
 
+22. overload vs override
 
 
 24.
@@ -104,6 +105,7 @@ It divides larger tables to smaller tables and links them using relationships.
 32. automic
 
 32.hashmap,treemap,linkedhashmap
+Hashset,treeset, linkedhashset.
 HashMap offers O(1) lookup and insertion. It is implemented by an array of linked lists.
 TreeMap offers O(log N) lookup and insertion. Keys are ordered. It is implemented by a Red-Black Tree.
 LinkedHashMap offers O(1) lookup and insertion. Keys are ordered by their insertion order. 
