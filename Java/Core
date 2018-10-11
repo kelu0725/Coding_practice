@@ -17,6 +17,9 @@ There are some subclasses that have same behaviors, we don't have to write the s
 A class can only extends on abstract class.
 
 4. serialization
+It's a mechanism to convert the state of object to byte stream.
+writeObject(object o)
+readObject()
 it is used to transfer objects from one machine to another machine. 
 
 
@@ -29,14 +32,18 @@ all runtime exception is classified as unchecked exception
 
 7. why we use exception
 
+
 8. finally, final, finalized()
+how to create an immutable class
+
 
 9. synchronized()
 enable the lock explicitly, to work in multi-threading
 
+
 10. How to create threads in java?
-Thread class interface implementing runnable interface, run()
-which one is better to use?
+extend Thread class
+implement Runnable Interface
 
 11. autoboxing
 use wrapper class, to primitive, autoboxing 
@@ -71,10 +78,7 @@ auto wiring process, by type, by name
 application context
 XML being 
 
-22. BeanFactory vs Application Context
 
-23. main interface
-load
 
 24.
 Swing
@@ -92,6 +96,12 @@ Swing
 30. difference between types of drivers in jdbc
 
 31. SQL normalization
+Normalization is a database design technique 
+which organizes tables in a manner
+that reduces redundancy and dependency of data.
+It divides larger tables to smaller tables and links them using relationships.
+
+32. automic
 
 32.hashmap,treemap,linkedhashmap
 HashMap offers O(1) lookup and insertion. It is implemented by an array of linked lists.
