@@ -34,3 +34,5 @@ for linkedlist, it is faster; for arraylist, not faster?
 The remove and poll methods differ in their behavior only when the queue is empty. Under these circumstances, 
 remove throws NoSuchElementException , while poll returns null . 
 The element and peek methods return, but do not remove, the head of the queue.
+
+lc Design Twitter
