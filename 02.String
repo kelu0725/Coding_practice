@@ -1,0 +1,23 @@
+ * [字符串](#字符串)
+  * [Anagram](#Anagram)
+    * [ValidAnagram](#ValidAnagram)
+    * [FindAnagramMappings](#FindAnagramMappings)
+    * [GroupAnagrams](#GroupAnagrams)
+    * [FindAllAnagramsInString](#FindAllAnagramsInString)
+  * [Palindrome](#Palindrome)
+  * [Substring](#Substring)
+  * [Others](#Others)
+    * [StringMatching](#StringMatching)
+  * [Hard](#Hard)
+  * [Isomorphic](#Isomorphic)
+  
+## Anagram
+Anagram: a word, phrase, or name formed by rearranging the letters of another
+**Valid Anagram** 
+
+[242. Valid Anagram (Easy)](https://leetcode.com/problems/valid-anagram/description/)
+可以用 HashMap 来映射字符与出现次数，然后比较两个字符串出现的字符数量是否相同(先增后减)
+时间和空间复杂度：O(n).
+
+
+
