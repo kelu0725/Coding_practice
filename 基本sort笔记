@@ -77,4 +77,70 @@ while(true){
    }
  }
 
+4. mergeSort
+
+    public void merge(int[] nums, int low, int high, int mid) {
+        int leftsize = mid - low + 1;
+        int rightsize = high - mid;
+        int[] left = new int[leftsize];
+        int[] right = new int[rightsize];
+        System.arraycopy(nums, low, left, 0, leftsize);
+        System.arraycopy(nums, mid + 1, right, 0, rightsize);
+
+        //initial index of two array
+        int i = 0;
+        int j = 0;
+        //pointer of array,start merge
+        int idx = low;
+        while (i < leftsize && j < rightsize) {
+            if (left[i] < right[j]) {
+                nums[idx++] = left[i++];
+            } else {
+                nums[idx++] = right[j++];
+            }
+        }
+        while (i < leftsize) nums[idx++] = left[i++];
+        while (j < rightsize) nums[idx++] = right[j++];
+
+    }
+
+    public void sort(int[] nums, int low, int high) {
+        if (high <= low || nums == null || nums.length == 0) return;
+        int mid = low + (high - low) / 2;
+        sort(nums, low, mid);
+        sort(nums, mid + 1, high);
+        merge(nums, low, high, mid);
+    }
+
+    public void mergeSort(int[] nums) {
+        sort(nums, 0, nums.length - 1);
+        System.out.println(Arrays.toString(nums));
+    }
+    
+5. quickSort
+public void sort(int[] nums) {
+        quicksort(nums, 0, nums.length - 1);
+    }
+
+    public void quicksort(int[] nums, int low, int high) {
+        if (low >= high) return;
+        int p = low + (high - low) / 2;
+        int pivot = nums[p];
+        int l = 0;
+        int h = nums.length - 1;
+        while (l < h) {
+            while (nums[l] < pivot && l < h) l++;
+            while (nums[h] > pivot && l < h) h--;
+            int tmp = nums[l];
+            nums[l] = nums[h];
+            nums[h] = tmp;
+            l++;
+            h--;
+        }
+
+        quicksort(nums, low, p);
+        quicksort(nums, p + 1, high);
+
+    }
+6. heapSort
 
